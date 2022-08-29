@@ -18,6 +18,7 @@ import xtensus.stage.GReclamation.entities.Appeloffre;
 import xtensus.stage.GReclamation.entities.DemandesType;
 import xtensus.stage.GReclamation.entities.EtapesDemandes;
 import xtensus.stage.GReclamation.entities.Plainte;
+import xtensus.stage.GReclamation.service.HistoriqueDemandeService;
 import xtensus.stage.GReclamation.service.PlainteService;
 
 @RestController
@@ -27,10 +28,14 @@ public class PlainteController {
 	@Autowired
 	private PlainteService plainteService;
 	
+	@Autowired
+	private HistoriqueDemandeService historiqueDemandeService;
+	
 	//add
 	@PostMapping("/")
 	public ResponseEntity<Plainte> createPlainte(@RequestBody Plainte plainte){
 		Plainte plainte1 = this.plainteService.createPlainte(plainte);
+		historiqueDemandeService.createHistorique(this.historiqueDemandeService.findDateFinPrevue(plainte1.getPlainteId()));
 		return ResponseEntity.ok(plainte1);
 	}
 		

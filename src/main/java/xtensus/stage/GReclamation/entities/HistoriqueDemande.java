@@ -3,6 +3,7 @@ package xtensus.stage.GReclamation.entities;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -32,13 +34,26 @@ public class HistoriqueDemande {
 	private Integer HistoriqueDemandeDureeReelle;    
 	private Date HistoriqueDemandeDateValidation;
 	private Plainte plainte;
+	private Set<EtapesDemandes> etapesDemandes;
+	
+	
+	
 	//private  HistoriqueDemandeDecisionId     //int DEFAULT NULL,
 	
 	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "plainteId")
 	public Plainte getPlainte() {
 		return plainte;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "historiqueDemande")
+	public Set<EtapesDemandes> getEtapesDemandes() {
+		return etapesDemandes;
+	}
+	public void setEtapesDemandes(Set<EtapesDemandes> etapesDemandes) {
+		this.etapesDemandes = etapesDemandes;
 	}
 	public void setPlainte(Plainte plainte) {
 		this.plainte = plainte;

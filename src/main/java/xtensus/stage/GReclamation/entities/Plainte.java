@@ -3,6 +3,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -26,11 +28,15 @@ public class Plainte implements java.io.Serializable {
     private Appeloffre appeloffre;
     private Soumissionnaire soumissionnaire;
     private DemandesType demandesType; 
+    
+    
     //private CategoriePlainte categoriePlainte;
     //private int etatId;
     
     
-    public Plainte(){
+    
+    
+	public Plainte(){
     	
     }
     

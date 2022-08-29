@@ -33,13 +33,21 @@ public class EtapesDemandes  implements Serializable{
 	private Boolean etapesDemandesDureeJourOuvrable;
 	private ActeurType etapesDemandesActeurType;
 	private DemandesType etapesDemandesType;
+	
+	private HistoriqueDemande historiqueDemande;
+	
+	
 	public EtapesDemandes() {
 		super();
 	}
+	
+	
+	
+	
 	public EtapesDemandes(Integer etapesDemandesId, String etapesDemandesLibelle, String etapesDemandesDescription,
 			Integer etapesDemandesDelaiExecution, Integer etapesDemandesOrdre, Boolean etapesDemandesEnvoiAlerte,
 			Integer etapesDemandesDureeJour, Boolean etapesDemandesDureeJourOuvrable,
-			ActeurType etapesDemandesActeurType, DemandesType etapesDemandesType) {
+			ActeurType etapesDemandesActeurType, DemandesType etapesDemandesType, HistoriqueDemande historiqueDemande) {
 		super();
 		this.etapesDemandesId = etapesDemandesId;
 		this.etapesDemandesLibelle = etapesDemandesLibelle;
@@ -51,9 +59,30 @@ public class EtapesDemandes  implements Serializable{
 		this.etapesDemandesDureeJourOuvrable = etapesDemandesDureeJourOuvrable;
 		this.etapesDemandesActeurType = etapesDemandesActeurType;
 		this.etapesDemandesType = etapesDemandesType;
+		this.historiqueDemande = historiqueDemande;
 	}
+
+
 	
-	
+
+
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "historiqueEtape")
+	public HistoriqueDemande getHistoriqueDemande() {
+		return historiqueDemande;
+	}
+
+
+
+
+	public void setHistoriqueDemande(HistoriqueDemande historiqueDemande) {
+		this.historiqueDemande = historiqueDemande;
+	}
+
+
+
+
 	@Id
 	@GeneratedValue(strategy=IDENTITY)
 	@Column(name="etapesDemandesId",unique=true,nullable=false)
