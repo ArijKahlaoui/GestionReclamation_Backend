@@ -4,6 +4,8 @@ package xtensus.stage.GReclamation.entities;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +52,7 @@ public class Document implements java.io.Serializable {
 	private Soumissionnaire soumissionnaire;
 	private Appeloffre appeloffre;
 	private String documentTypeUpload;
-	private Plainte historiquePlainte;
+	private HistoriqueDemande historiquePlainte;
 //	private Document document;
 
 	public Document() {
@@ -67,7 +69,8 @@ public class Document implements java.io.Serializable {
 			Integer documentSupprimeDelegueId, Document documentParent,
 			String documentNomAR, String documentObjetAR,
 			String documentCommentaireAR, String documentTypeAR,
-			Integer documentIdDocumentOriginal,Integer documentOrdre,DocumentCategorie documentCategorie,Soumissionnaire soumissionnaire) {
+			Integer documentIdDocumentOriginal,Integer documentOrdre,DocumentCategorie documentCategorie,Soumissionnaire soumissionnaire
+			,HistoriqueDemande historiquePlainte) {
 			
 		super();
 		this.idDocument = idDocument;
@@ -93,7 +96,7 @@ public class Document implements java.io.Serializable {
 		this.documentOrdre=documentOrdre;
 		this.documentCategorie=documentCategorie;
 		this.soumissionnaire=soumissionnaire;
-
+		this.historiquePlainte = historiquePlainte;
 	}
 
 
@@ -328,7 +331,7 @@ public class Document implements java.io.Serializable {
 	}
 
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "documentAppelOffreId")
 	public Appeloffre getAppeloffre() {
 		return appeloffre;
@@ -349,14 +352,14 @@ public class Document implements java.io.Serializable {
 	
 
 
-	public void setHistoriquePlainte(Plainte historiquePlainte) {
+	public void setHistoriquePlainte(HistoriqueDemande historiquePlainte) {
 		this.historiquePlainte = historiquePlainte;
 	}
 
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "documentPlainteId")
-	public Plainte getHistoriquePlainte() {
+	public HistoriqueDemande getHistoriquePlainte() {
 		return historiquePlainte;
 	}
 

@@ -1,14 +1,13 @@
 package xtensus.stage.GReclamation.service;
 
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import xtensus.stage.GReclamation.entities.Document;
-import xtensus.stage.GReclamation.entities.Plainte;
 
 public interface DocumentService {
-	public Document createDocument(Document document);
+	public List<Document> createDocument(Set<Document> documents);
 	
 	public Document updateDocument(Document document);
 	

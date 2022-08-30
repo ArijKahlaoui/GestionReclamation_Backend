@@ -2,6 +2,8 @@ package xtensus.stage.GReclamation.controllers;
 
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,9 +36,9 @@ public class DocumentController {
 	
 	//add
 	@PostMapping("/")
-	public ResponseEntity<Document> createDocument(@RequestBody Document document){
-		Document document1 = this.documentService.createDocument(document);
-		return ResponseEntity.ok(document1);
+	public ResponseEntity<List<Document>> createDocument(@RequestBody Set<Document> documents){
+		List<Document>documents1 = this.documentService.createDocument(documents);
+		return ResponseEntity.ok(documents1);
 	}
 
 	

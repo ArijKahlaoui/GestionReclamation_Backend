@@ -5,6 +5,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,6 +41,7 @@ public class HistoriqueDemande {
 	
 	//private  HistoriqueDemandeDecisionId     //int DEFAULT NULL,
 	
+
 	
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -47,6 +49,8 @@ public class HistoriqueDemande {
 	public Plainte getPlainte() {
 		return plainte;
 	}
+	
+	
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "historiqueDemande")
 	public Set<EtapesDemandes> getEtapesDemandes() {

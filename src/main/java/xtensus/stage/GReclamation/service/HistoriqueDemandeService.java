@@ -10,10 +10,10 @@ import xtensus.stage.GReclamation.entities.Plainte;
 
 
 public interface HistoriqueDemandeService {
+
+	public List<HistoriqueDemande> createHistorique(Set<HistoriqueDemande> historiqueDemandes);
 	
 	public Set<HistoriqueDemande> findDateFinPrevue(Integer plainterId);
-	
-	public List<HistoriqueDemande> createHistorique(Set<HistoriqueDemande> historiqueDemandes);
 	
 	public Set<HistoriqueDemande> getHistoriqueOfPlainte(Plainte plainte);
 }

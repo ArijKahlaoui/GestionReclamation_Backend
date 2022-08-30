@@ -3,6 +3,7 @@ package xtensus.stage.GReclamation.service.impl;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,11 @@ public class DocumentServiceImpl implements DocumentService {
 	private DocumentRepository documentRepository;
 	
 	@Override
-	public Document createDocument(Document document) {
+	public List<Document> createDocument(Set<Document> documents) {
 		
-		return this.documentRepository.save(document);
+		return this.documentRepository.saveAll(documents);
 	}
+	
 	
 	@Override
 	public Document updateDocument(Document document) {

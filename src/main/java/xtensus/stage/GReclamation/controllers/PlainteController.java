@@ -18,6 +18,7 @@ import xtensus.stage.GReclamation.entities.Appeloffre;
 import xtensus.stage.GReclamation.entities.DemandesType;
 import xtensus.stage.GReclamation.entities.EtapesDemandes;
 import xtensus.stage.GReclamation.entities.Plainte;
+import xtensus.stage.GReclamation.service.DocumentService;
 import xtensus.stage.GReclamation.service.HistoriqueDemandeService;
 import xtensus.stage.GReclamation.service.PlainteService;
 
@@ -30,6 +31,7 @@ public class PlainteController {
 	
 	@Autowired
 	private HistoriqueDemandeService historiqueDemandeService;
+	
 	
 	//add
 	@PostMapping("/")
